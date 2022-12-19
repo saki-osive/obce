@@ -19,16 +19,13 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#![cfg_attr(not(feature = "std"), no_std)]
-
-#[cfg(feature = "ink")]
-pub mod ink_lang;
-#[cfg(feature = "substrate")]
-pub mod substrate;
-
-pub mod codegen;
-
-pub use obce_macro::{
-    definition,
-    implementation,
+#[cfg(feature = "std")]
+pub use ink_engine;
+#[cfg(feature = "std")]
+pub use ink_lang::metadata;
+pub use ink_lang::{
+    env,
+    prelude,
+    primitives,
+    storage,
 };

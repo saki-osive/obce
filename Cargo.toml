@@ -34,7 +34,8 @@ frame-system = { git = "https://github.com/paritytech/substrate", branch = "polk
 pallet-contracts = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.34", default-features = false, optional = true }
 
 # Ink deps
-ink = { version = "~4.0.0-beta", default-features = false, optional = true }
+ink_lang = { package = "ink", version = "4.0.0-beta", default-features = false, optional = true }
+ink_engine = { version = "4.0.0-beta", default-features = false, optional = true }
 
 [features]
 default = ["std"]
@@ -46,11 +47,13 @@ substrate = [
     "sp-runtime",
     "sp-std",
 ]
+ink = [
+    "ink_lang",
+]
 std = [
     "scale-info/std",
     "scale/std",
 ]
-ink = []
 substrate-std = [
     "std",
     "substrate",
@@ -63,7 +66,9 @@ substrate-std = [
 ]
 ink-std = [
     "std",
-    "ink/std",
+    "ink",
+    "ink_lang/std",
+    "ink_engine/std"
 ]
 runtime-benchmarks = [
     "frame-system/runtime-benchmarks",
